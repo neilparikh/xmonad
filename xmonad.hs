@@ -18,4 +18,6 @@ main = do
   where
   delkeys XConfig {modMask = modm} = []
   inskeys conf@(XConfig {modMask = modm}) =
-      [((modm .|. controlMask, xK_Delete), spawn "light-locker-command --lock")]
+      [ ((modm .|. controlMask, xK_Delete), spawn "light-locker-command --lock")
+      , ((modm .|. controlMask, xK_Print),  spawn "scrot -u '%F_%T_%s.png' -e 'mv $f ~/Pictures/screenshots/'")
+      ]
