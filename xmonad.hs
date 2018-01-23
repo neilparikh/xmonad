@@ -4,7 +4,20 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.NoFrillsDecoration
 import XMonad.Hooks.DynamicLog
 
-myLayout = noFrillsDeco shrinkText def (layoutHook def) ||| simpleTabbed
+myLayout = deco tiled ||| deco (Mirror tiled) ||| simpleTabbed
+  where
+    -- add a title bar to the window
+    deco    = noFrillsDeco shrinkText def
+
+    -- from https://github.com/xmonad/xmonad/blob/master/src/XMonad/Config.hs#L136
+    -- default tiling algorithm partitions the screen into two panes
+    tiled   = Tall nmaster delta ratio
+    -- The default number of windows in the master pane
+    nmaster = 1
+    -- Default proportion of screen occupied by master pane
+    ratio   = 1/2
+    -- Percent of screen to increment by when resizing panes
+    delta   = 3/100
 
 main = do
   let conf = def {
