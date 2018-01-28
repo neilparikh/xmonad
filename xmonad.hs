@@ -26,8 +26,7 @@ main = do
     , keys        = customKeys delkeys inskeys
     -- , modMask     = mod4Mask
   }
-  config <- xmobar conf
-  xmonad config
+  xmobar conf >>= xmonad
   where
   delkeys XConfig {modMask = modm} = []
   inskeys conf@(XConfig {modMask = modm}) =
