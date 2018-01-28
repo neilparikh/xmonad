@@ -4,7 +4,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.NoFrillsDecoration
 import XMonad.Hooks.DynamicLog
 
-myLayout = deco tiled ||| deco (Mirror tiled) ||| simpleTabbed
+myLayout = deco tiled ||| deco (Mirror tiled) ||| simpleTabbedAlways
   where
     -- add a title bar to the window
     deco    = noFrillsDeco shrinkText def
