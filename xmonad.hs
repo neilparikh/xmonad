@@ -3,6 +3,7 @@ import XMonad.Util.CustomKeys
 import XMonad.Layout.Tabbed
 import XMonad.Layout.NoFrillsDecoration
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
 
 myLayout = deco tiled ||| deco (Mirror tiled) ||| simpleTabbedAlways
   where
@@ -24,6 +25,7 @@ main = do
       borderWidth = 2
     , layoutHook  = myLayout
     , keys        = customKeys delkeys inskeys
+    , startupHook = sendMessage (SetStruts [minBound .. maxBound] [])
     -- , modMask     = mod4Mask
   }
   xmobar conf >>= xmonad
